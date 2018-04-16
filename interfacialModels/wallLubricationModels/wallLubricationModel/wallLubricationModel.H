@@ -37,6 +37,7 @@ SourceFiles
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include "wallDependentModel.H"
 #include "volFields.H"
 #include "dictionary.H"
 #include "runTimeSelectionTables.H"
@@ -47,10 +48,12 @@ namespace Foam
 class phasePair;
 
 /*---------------------------------------------------------------------------*\
-                           Class wallLubricationModel Declaration
+                      Class wallLubricationModel Declaration
 \*---------------------------------------------------------------------------*/
 
 class wallLubricationModel
+:
+    public wallDependentModel
 {
 protected:
 
@@ -58,9 +61,6 @@ protected:
 
         //- Phase pair
         const phasePair& pair_;
-
-        //- Wall distance
-        const volScalarField& yWall_;
 
 
 public:

@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2013 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2013-2014 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -53,7 +53,7 @@ SourceFiles
 
 #include "RASModel.H"
 #include "eddyViscosity.H"
-#include "PhaseIncompressibleTurbulenceModel.H"
+#include "PhaseCompressibleTurbulenceModel.H"
 #include "phaseModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -71,7 +71,7 @@ class phasePressureModel
 :
     public eddyViscosity
     <
-        RASModel<PhaseIncompressibleTurbulenceModel<phaseModel> >
+        RASModel<PhaseCompressibleTurbulenceModel<phaseModel> >
     >
 {
     // Private data
@@ -120,9 +120,9 @@ public:
         phasePressureModel
         (
             const volScalarField& alpha,
-            const geometricOneField& rho,
+            const volScalarField& rho,
             const volVectorField& U,
-            const surfaceScalarField& alphaPhi,
+            const surfaceScalarField& alphaRhoPhi,
             const surfaceScalarField& phi,
             const phaseModel& transport,
             const word& propertiesName = turbulenceModel::propertiesName,

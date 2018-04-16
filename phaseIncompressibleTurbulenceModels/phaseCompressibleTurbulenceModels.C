@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2013-2014 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2014 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "PhaseIncompressibleTurbulenceModel.H"
+#include "PhaseCompressibleTurbulenceModel.H"
 #include "phaseModel.H"
 #include "twoPhaseSystem.H"
 #include "addToRunTimeSelectionTable.H"
@@ -36,19 +36,19 @@ License
 makeBaseTurbulenceModel
 (
     volScalarField,
-    geometricOneField,
-    incompressibleTurbulenceModel,
-    PhaseIncompressibleTurbulenceModel,
+    volScalarField,
+    compressibleTurbulenceModel,
+    PhaseCompressibleTurbulenceModel,
     phaseModel
 );
 
 #define makeRASModel(Type)                                                     \
     makeTemplatedTurbulenceModel                                               \
-    (phaseModelPhaseIncompressibleTurbulenceModel, RAS, Type)
+    (phaseModelPhaseCompressibleTurbulenceModel, RAS, Type)
 
 #define makeLESModel(Type)                                                     \
     makeTemplatedTurbulenceModel                                               \
-    (phaseModelPhaseIncompressibleTurbulenceModel, LES, Type)
+    (phaseModelPhaseCompressibleTurbulenceModel, LES, Type)
 
 #include "kEpsilon.H"
 makeRASModel(kEpsilon);
@@ -79,11 +79,11 @@ makeLESModel(continuousGasKEqn);
 
 #include "kineticTheoryModel.H"
 makeTurbulenceModel
-(phaseModelPhaseIncompressibleTurbulenceModel, RAS, kineticTheoryModel);
+(phaseModelPhaseCompressibleTurbulenceModel, RAS, kineticTheoryModel);
 
 #include "phasePressureModel.H"
 makeTurbulenceModel
-(phaseModelPhaseIncompressibleTurbulenceModel, RAS, phasePressureModel);
+(phaseModelPhaseCompressibleTurbulenceModel, RAS, phasePressureModel);
 
 
 // ************************************************************************* //

@@ -1,4 +1,4 @@
-phaseIncompressibleTurbulenceModels.C
+phaseCompressibleTurbulenceModels.C
 phasePressureModel/phasePressureModel.C
 
 kineticTheoryModels/kineticTheoryModel/kineticTheoryModel.C
@@ -32,4 +32,7 @@ kineticTheoryModels/frictionalStressModel/frictionalStressModel/newFrictionalStr
 kineticTheoryModels/frictionalStressModel/JohnsonJackson/JohnsonJacksonFrictionalStress.C
 kineticTheoryModels/frictionalStressModel/Schaeffer/SchaefferFrictionalStress.C
 
-LIB = $(FOAM_LIBBIN)/libphaseIncompressibleTurbulenceModels
+kineticTheoryModels/derivedFvPatchFields/JohnsonJacksonParticleTheta/JohnsonJacksonParticleThetaFvPatchScalarField.C
+kineticTheoryModels/derivedFvPatchFields/JohnsonJacksonParticleSlip/JohnsonJacksonParticleSlipFvPatchVectorField.C
+
+LIB = $(FOAM_LIBBIN)/libphaseCompressibleTurbulenceModels

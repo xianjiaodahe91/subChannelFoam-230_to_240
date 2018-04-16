@@ -47,7 +47,7 @@ SourceFiles
 
 #include "RASModel.H"
 #include "eddyViscosity.H"
-#include "PhaseIncompressibleTurbulenceModel.H"
+#include "PhaseCompressibleTurbulenceModel.H"
 #include "phaseModel.H"
 #include "dragModel.H"
 #include "viscosityModel.H"
@@ -72,7 +72,7 @@ class kineticTheoryModel
 :
     public eddyViscosity
     <
-        RASModel<PhaseIncompressibleTurbulenceModel<phaseModel> >
+        RASModel<PhaseCompressibleTurbulenceModel<phaseModel> >
     >
 {
     // Private data
@@ -128,6 +128,12 @@ class kineticTheoryModel
             //- The granular bulk viscosity
             volScalarField lambda_;
 
+            //- The granular radial distribution
+            volScalarField gs0_;
+
+            //- The granular "thermal" conductivity
+            volScalarField kappa_;
+
 
     // Private Member Functions
 
@@ -153,9 +159,9 @@ public:
         kineticTheoryModel
         (
             const volScalarField& alpha,
-            const geometricOneField& rho,
+            const volScalarField& rho,
             const volVectorField& U,
-            const surfaceScalarField& alphaPhi,
+            const surfaceScalarField& alphaRhoPhi,
             const surfaceScalarField& phi,
             const phaseModel& transport,
             const word& propertiesName = turbulenceModel::propertiesName,

@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2011-2013 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2014 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -80,7 +80,7 @@ Foam::kineticTheoryModels::conductivityModels::Gidaspow::kappa
 {
     const scalar sqrtPi = sqrt(constant::mathematical::pi);
 
-    return da*sqrt(Theta)*
+    return rho1*da*sqrt(Theta)*
     (
         2.0*sqr(alpha1)*g0*(1.0 + e)/sqrtPi
       + (9.0/8.0)*sqrtPi*g0*0.5*(1.0 + e)*sqr(alpha1)
