@@ -62,6 +62,9 @@ makeRASModel(LaheyKEpsilon);
 #include "continuousGasKEpsilon.H"
 makeRASModel(continuousGasKEpsilon);
 
+#include "myMixtureKEpsilon.H"
+makeRASModel(myMixtureKEpsilon);
+
 #include "Smagorinsky.H"
 makeLESModel(Smagorinsky);
 
